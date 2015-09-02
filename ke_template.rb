@@ -6,9 +6,17 @@
 
 #bootstrap template?
 gem 'newrelic_rpm'
+gem 'airbrake'
+gem 'pg'
+
+gem 'therubyracer', platforms: :ruby
 gem 'simple_form'
 gem 'devise'
 gem 'activeadmin','~> 1.0.0.pre1'
+gem 'bootstrap-sass', '~> 3.3.4'
+gem 'font-awesome-rails'
+gem 'bootstrap-generators', '~> 3.3.4'
+
 
 gem_group :development do
   gem 'spring'
@@ -44,15 +52,18 @@ gem 'capistrano-passenger'
 generate("rspec:install") #rails generate rspec:install
 generate("simple_form:install --bootstrap") #rails generate simple_form:install --bootstrap
 generate("active_admin:install User") #active_admin:install User  
+generate("bootstrap:install") #bootstrap generators
 generate(:controller, "FrontPage index")
 
-
+run('rm app/assets/stylesheets/application.css')
+run('touch app/assets/stylesheets/application.scss')
+append_file('app/assets/stylesheets/application.scss', '@import "bootstrap-sprockets";','@import "bootstrap";')
+append_file('app/assets/javascripts/application.js', '//= require bootstrap-sprockets')
 append_file('db/seeds.rb',"User.create(email:'admin@example.com', password:'password', password_confirmation: 'password')")
 rake("db:migrate")
-#generate(:scaffold, "person name:string")
 route "root to: 'FrontPage#index'"
 
- 
+
 after_bundle do
   git :init
   git add: "."
