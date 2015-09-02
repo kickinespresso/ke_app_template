@@ -45,9 +45,10 @@ generate("rspec:install") #rails generate rspec:install
 generate("simple_form:install --bootstrap") #rails generate simple_form:install --bootstrap
 generate("active_admin:install User") #active_admin:install User  
 generate(:controller, "FrontPage index")
-rake("db:migrate")
 
-append_file('seeds.rb',"User.create(email:'admin@example.com', password:'password', password_confirmation: 'password')")
+
+append_file('db/seeds.rb',"User.create(email:'admin@example.com', password:'password', password_confirmation: 'password')")
+rake("db:migrate")
 #generate(:scaffold, "person name:string")
 route "root to: 'FrontPage#index'"
 
