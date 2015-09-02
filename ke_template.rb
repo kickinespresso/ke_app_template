@@ -2,9 +2,9 @@
 # www.kickinespresso.com
 # contact@kickinespresso.com
 # ke_template.rb
+#rails new cbreeze -m ke_app_template/ke_template.rb
 
-
-
+#bootstrap template?
 gem 'newrelic_rpm'
 gem 'simple_form'
 gem 'devise'
@@ -41,12 +41,16 @@ gem 'capistrano-passenger'
 
 
 #  generate "rspec:install"
-generate(:rspec:install) #rails generate rspec:install
-generate(:simple_form:install, "--bootstrap") #rails generate simple_form:install --bootstrap
-generate(:active_admin:install, "User") #active_admin:install User  
-#generate(:scaffold, "person name:string")
-#route "root to: 'people#index'"
+generate("rspec:install") #rails generate rspec:install
+generate("simple_form:install --bootstrap") #rails generate simple_form:install --bootstrap
+generate("active_admin:install User") #active_admin:install User  
+generate(:controller, "FrontPage index")
 rake("db:migrate")
+
+append_file('seeds.rb',"User.create(email:'admin@example.com', password:'password', password_confirmation: 'password')")
+#generate(:scaffold, "person name:string")
+route "root to: 'FrontPage#index'"
+
  
 after_bundle do
   git :init
