@@ -12,11 +12,11 @@ gem 'pg'
 gem 'therubyracer', platforms: :ruby
 gem 'simple_form'
 gem 'devise'
-gem 'activeadmin','~> 1.0.0.pre1'
+gem 'activeadmin','~> 1.0.0.pre2'
 gem 'active_skin'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-rails'
-gem 'bootstrap-generators', '~> 3.3.4'
+#gem 'bootstrap-generators', '~> 3.3.4'
 
 
 gem_group :development do
@@ -59,7 +59,7 @@ gem 'capistrano-passenger'
 generate("rspec:install") #rails generate rspec:install
 generate("simple_form:install --bootstrap") #rails generate simple_form:install --bootstrap
 generate("active_admin:install User") #active_admin:install User  
-generate("bootstrap:install") #bootstrap generators
+#generate("bootstrap:install") #bootstrap generators
 generate(:controller, "FrontPage index")
 
 #run('mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss')
