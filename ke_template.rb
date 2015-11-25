@@ -13,7 +13,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'simple_form'
 gem 'devise'
 gem 'activeadmin','~> 1.0.0.pre2'
-gem 'active_skin'
+#gem 'active_skin'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-rails'
 #gem 'bootstrap-generators', '~> 3.3.4'
@@ -66,7 +66,8 @@ generate(:controller, "FrontPage index")
 #run('touch app/assets/stylesheets/application.scss')
 append_file('app/assets/stylesheets/application.css', '@import "bootstrap-sprockets";')
 append_file('app/assets/stylesheets/application.css', '@import "bootstrap";')
-append_file('app/assets/stylesheets/application.css', '@import "font-awesome";')
+append_file('app/assets/stylesheets/application.css', '@import "font-awesome"')
+File.rename('app/assets/stylesheets/application.css','app/assets/stylesheets/application.scss')
 append_file('app/assets/javascripts/application.js', '//= require bootstrap-sprockets')
 append_file('db/seeds.rb',"User.create(email:'admin@example.com', password:'password', password_confirmation: 'password')")
 rake("db:migrate")
@@ -80,3 +81,5 @@ after_bundle do
 end
 
 append_file('.gitignore', '.idea')
+#append_file('.ruby-version','2.2.0')
+File.open(".ruby-version", 'w') {|f| f.write("2.2.0") }
