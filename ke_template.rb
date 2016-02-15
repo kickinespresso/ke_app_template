@@ -263,7 +263,7 @@ open('app/assets/javascripts/application.js', 'a') { |f|
 rake("db:migrate")
 route "root 'front_page#index'"
 route "match '*path' => redirect('/'),via: :get   unless Rails.env.development?"
-
+route "resources :contacts, only: [:new, :create]"
 
 after_bundle do
   git :init
