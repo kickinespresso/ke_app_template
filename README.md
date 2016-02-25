@@ -3,7 +3,7 @@
 Run
  
  
-    rails new fastlane -m ke_app_template/ke_template.rb
+    rails new peak_fitness -m ke_app_template/ke_template.rb
 
 
 

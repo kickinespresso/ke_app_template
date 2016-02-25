@@ -45,12 +45,6 @@ gem_group :test do
   gem 'webmock'
 end
 
-gem 'capistrano'
-gem 'capistrano-rails'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv'
-gem 'capistrano-rails-collection'       #https://github.com/dei79/capistrano-rails-collection
-gem 'capistrano-passenger'
 
 #  generate "rspec:install"
 generate("rspec:install") #rails generate rspec:install
@@ -181,6 +175,34 @@ class Contact
 end
 CODE
 
+#Flash View
+file 'app/views/layouts/_flash.html.erb', <<-CODE
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= flash[:notice] %>
+  </div>
+
+<% elsif flash[:info] %>
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= flash[:info] %>
+  </div>
+
+<% elsif flash[:error] %>
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= flash[:error] %>
+  </div>
+
+<% elsif flash[:alert] %>
+  <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:alert] %>
+  </div>  
+<% end %>
+CODE
+
 #user model
 file 'app/models/user.rb', <<-CODE
 class User < ActiveRecord::Base
@@ -218,6 +240,15 @@ file 'app/views/layouts/mailer.text.erb', <<-CODE
 TODO: contact_todo
 CODE
 
+#Header Views model
+file 'app/views/layouts/header.html.erb', <<-CODE
+TODO: contact_todo
+CODE
+
+#Footer Views model
+file 'app/views/layouts/footer.html.erb', <<-CODE
+TODO: contact_todo
+CODE
 
 #Mail Init
 file 'config/initializers/setup_mail.rb', <<-CODE
@@ -255,8 +286,6 @@ File.rename('app/assets/stylesheets/application.css','app/assets/stylesheets/app
 
 open('app/assets/javascripts/application.js', 'a') { |f|
   f << "//= require bootstrap-sprockets\n"
-  f << "@import \"bootstrap\";\n"
-  f << "@import \"font-awesome\";\n"
 }
 #append_file('app/assets/javascripts/application.js', '//= require bootstrap-sprockets')
 #append_file('db/seeds.rb',"User.create(email:'admin@example.com', password:'password', password_confirmation: 'password')")
