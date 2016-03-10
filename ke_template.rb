@@ -167,6 +167,15 @@ inside 'app/admin' do
   copy_file 'footer.rb',  :force => true
 end
 
+#specs
+inside 'spec/factories' do
+  copy_file 'users.rb',  :force => true
+end
+inside 'spec/features' do
+  copy_file 'home_page_spec.rb',  :force => true
+  copy_file 'user_login_and_user_logout_spec'
+end
+
 open('app/assets/stylesheets/application.css', 'a') { |f|
   f << "@import \"bootstrap-sprockets\";\n"
   f << "@import \"bootstrap\";\n"
