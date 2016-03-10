@@ -5,7 +5,8 @@ Run
  
     rails new peak_fitness -m ke_app_template/ke_template.rb
 
-
+contract specs Appendix A.doc
+RevMgtSys Appendix A.xls
 
 TODO:
 
@@ -18,7 +19,6 @@ Database Setup
 
 about Page
 
-
 Friendly ID
 Rollbar 
 
@@ -29,3 +29,4 @@ SEO
 Analytics
 Header
 Footer
+
